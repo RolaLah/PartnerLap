@@ -3,6 +3,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:our_lap/screens.dart/Log.dart';
+import 'package:our_lap/screens.dart/info.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -99,6 +100,14 @@ class __HomeState extends State<_Home> {
               ),
               onPressed: () {
                 debugPrint("infoBtn Preesed");
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: ((context) {
+                      return Info();
+                    }),
+                  ),
+                );
               },
             )
           ],
