@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "589752798190",
+    "project_id": "ourlap-37c5f",
+    "storage_bucket": "ourlap-37c5f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:589752798190:android:f0a3d37a3f96629d9d5cff",
+        "android_client_info": {
+          "package_name": "com.example.our_lap"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "589752798190-j810mfpv64j1l9ffea9ms6t4g9h2vmtf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAM5IsxTLJ_07-r4E55S0aYTnLXjjM-emY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "589752798190-j810mfpv64j1l9ffea9ms6t4g9h2vmtf.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "589752798190-nn0rehj1i27gdf6s3tt36e91mgeg8e1o.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.ourLap"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
