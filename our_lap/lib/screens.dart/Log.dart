@@ -11,6 +11,7 @@ class Login_screen extends StatefulWidget {
 
 TextEditingController emailController = TextEditingController();
 TextEditingController passController = TextEditingController();
+Color ConColor = Color.fromARGB(255, 190, 198, 245);
 
 class _Login_screenState extends State<Login_screen> {
   @override
@@ -87,33 +88,30 @@ var notAMember_Text = Text(
   style: TextStyle(fontSize: 20, fontFamily: "AbyssinicaSIL"),
   textAlign: TextAlign.center,
 );
-var chip_Red = InkWell(
-  child: Chip(
-    label: Text("Red"),
-  ),
-  onTap: () {
-    emailController.text = "red@red.com";
-    passController.text = "12341234";
-  },
-);
-var chip_Blue = InkWell(
-  child: Chip(
-    label: Text("Blue"),
-  ),
-  onTap: () {
-    emailController.text = "blue@blue.com";
-    passController.text = "12341234";
-  },
-);
-var chip_MixColors = InkWell(
-  child: Chip(
-    label: Text("MixColors"),
-  ),
-  onTap: () {
-    emailController.text = "mix@colors.com";
-    passController.text = "12341234";
-  },
-);
+
+var chip_Red = ElevatedButton(
+    onPressed: () {
+      emailController.text = "red@red.com";
+      passController.text = "12341234";
+      ConColor = Colors.red;
+    },
+    child: Text("Red"));
+
+var chip_Blue = ElevatedButton(
+    onPressed: () {
+      emailController.text = "blue@blue.com";
+      passController.text = "12341234";
+      ConColor = Colors.blue;
+    },
+    child: Text("Blue"));
+
+var chip_MixColors = ElevatedButton(
+    onPressed: () {
+      emailController.text = "mix@colors.com";
+      passController.text = "12341234";
+      ConColor = Colors.green;
+    },
+    child: Text("Green"));
 
 class SignIn extends StatelessWidget {
   const SignIn({

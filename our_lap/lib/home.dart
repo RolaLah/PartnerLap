@@ -32,7 +32,7 @@ class __HomeState extends State<_Home> {
   Widget build(BuildContext context) {
     print(user?.email);
     return Scaffold(
-      backgroundColor: Colors.red,
+      backgroundColor: ConColor,
       appBar: AppBar(
         elevation: 12,
         leading: IconButton(
@@ -75,7 +75,7 @@ class __HomeState extends State<_Home> {
               },
             ),
             RadioListTile(
-              title: Text("Amin", style: radioTextStyle),
+              title: Text("Admin", style: radioTextStyle),
               value: "admin",
               groupValue: role,
               onChanged: (value) {
