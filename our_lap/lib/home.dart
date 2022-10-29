@@ -40,11 +40,9 @@ class __HomeState extends State<_Home> {
               FirebaseAuth.instance.signOut();
               Navigator.pushReplacement(
                 context,
-                MaterialPageRoute(
-                  builder: ((context) {
-                    return Login_screen();
-                  }),
-                ),
+                MaterialPageRoute(builder: ((context) {
+                  return Login_screen();
+                })),
               );
             },
             icon: Icon(Icons.logout)),
@@ -99,14 +97,11 @@ class __HomeState extends State<_Home> {
                 ),
               ),
               onPressed: () {
-                debugPrint("infoBtn Preesed");
                 Navigator.push(
                   context,
-                  MaterialPageRoute(
-                    builder: ((context) {
-                      return Info();
-                    }),
-                  ),
+                  MaterialPageRoute(builder: ((context) {
+                    return Info();
+                  })),
                 );
               },
             )
