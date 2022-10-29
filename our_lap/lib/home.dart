@@ -1,6 +1,8 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:our_lap/screens.dart/Log.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -10,6 +12,9 @@ class Home extends StatelessWidget {
     return const _Home();
   }
 }
+
+FirebaseAuth auth = FirebaseAuth.instance;
+User? user = auth.currentUser;
 
 class _Home extends StatefulWidget {
   const _Home({super.key});
@@ -24,11 +29,24 @@ class __HomeState extends State<_Home> {
 
   @override
   Widget build(BuildContext context) {
+    print(user?.email);
     return Scaffold(
       backgroundColor: Colors.red,
       appBar: AppBar(
         elevation: 12,
-        leading: const Icon(Icons.home_filled),
+        leading: IconButton(
+            onPressed: () {
+              FirebaseAuth.instance.signOut();
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                  builder: ((context) {
+                    return Login_screen();
+                  }),
+                ),
+              );
+            },
+            icon: Icon(Icons.logout)),
         title: const Text("Home Screen"),
       ),
       body: SafeArea(
