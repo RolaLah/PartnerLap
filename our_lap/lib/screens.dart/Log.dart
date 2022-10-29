@@ -115,36 +115,6 @@ var chip_MixColors = InkWell(
   },
 );
 
-class SignUp extends StatelessWidget {
-  const SignUp({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return TextButton(
-      onPressed: () async {
-        try {
-          var authenticationoject = FirebaseAuth.instance;
-          UserCredential MyUser =
-              await authenticationoject.createUserWithEmailAndPassword(
-                  email: emailController.text, password: passController.text);
-          ScaffoldMessenger.of(context)
-              .showSnackBar(SnackBar(content: Text("Done successfull")));
-        } catch (e) {
-          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-              content: Text(
-                  "Sorry, there already exists an account registered with this email address")));
-        }
-      },
-      child: Text(
-        "Sign Up",
-        style: TextStyle(fontSize: 20, fontFamily: "AbyssinicaSIL"),
-      ),
-    );
-  }
-}
-
 class SignIn extends StatelessWidget {
   const SignIn({
     Key? key,
@@ -161,9 +131,14 @@ class SignIn extends StatelessWidget {
                     email: emailController.text, password: passController.text);
             ScaffoldMessenger.of(context)
                 .showSnackBar(SnackBar(content: Text("Done successfull")));
-            Navigator.push(context, MaterialPageRoute(builder: ((context) {
-              return Home();
-            })));
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                builder: ((context) {
+                  return Home();
+                }),
+              ),
+            );
           } catch (e) {
             ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(content: Text("Sorry, please try again")));
@@ -176,5 +151,39 @@ class SignIn extends StatelessWidget {
             fontSize: 20,
           ),
         ));
+  }
+}
+
+class SignUp extends StatelessWidget {
+  const SignUp({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return TextButton(
+      onPressed: () async {
+        try {
+          var authenticationoject = FirebaseAuth.instance;
+          UserCredential MyUser =
+              await authenticationoject.createUserWithEmailAndPassword(
+                  email: emailController.text, password: passController.text);
+
+          ScaffoldMessenger.of(context)
+              .showSnackBar(SnackBar(content: Text("Done successfull")));
+        } catch (e) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(
+                  "Sorry, there already exists an account registered with this email address"),
+            ),
+          );
+        }
+      },
+      child: Text(
+        "Sign Up",
+        style: TextStyle(fontSize: 20, fontFamily: "AbyssinicaSIL"),
+      ),
+    );
   }
 }
