@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:our_lap/screens.dart/Sign.dart';
+import 'package:our_lap/home.dart';
 
 class Login_screen extends StatefulWidget {
   const Login_screen({super.key});
@@ -97,7 +97,7 @@ class _Login_screenState extends State<Login_screen> {
                         SnackBar(content: Text("Done successfull")));
                     Navigator.push(context,
                         MaterialPageRoute(builder: ((context) {
-                      return SignUp_Screen();
+                      return Home();
                     })));
                   } catch (e) {
                     ScaffoldMessenger.of(context).showSnackBar(
