@@ -6,6 +6,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 final coll = FirebaseFirestore.instance.collection("users");
 final docRef = coll.doc('acN8hoqzgYhrnki3ppjUfxhFu5y1');
+String _UserRole = "";
 
 class Info extends StatefulWidget {
   const Info({super.key});
@@ -39,26 +40,23 @@ class _InfoState extends State<Info> {
           docRef.get().then(
             (DocumentSnapshot doc) {
               final data = doc.data() as Map<String, dynamic>;
-              // ...
-              print("NZNZ: $data");
+              _UserRole = data.entries
+                  .singleWhere((element) => element.key == 'role')
+                  .value
+                  .toString();
             },
             onError: (e) => print("Error getting document: $e"),
           );
-          // if (snapshot.hasData) {
-          //   final docs = snapshot.data!;
           return Align(
             alignment: Alignment.topCenter,
             child: Column(
               children: [
                 Text(user!.uid.toString(), style: _defTextStyle),
                 Text(user!.email.toString(), style: _defTextStyle),
-                // Text(docs['role'], style: _defTextStyle),
-                Text(docRef.snapshots().toString(), style: _defTextStyle),
+                Text(_UserRole, style: _defTextStyle),
               ],
             ),
           );
-          // }
-          // return Text("Error!");
         },
       ),
     );
