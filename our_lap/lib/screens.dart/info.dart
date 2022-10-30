@@ -6,7 +6,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 final coll = FirebaseFirestore.instance.collection("users");
 final docRef = coll.doc(user!.uid);
-String _UserRole = "";
 
 class Info extends StatefulWidget {
   const Info({super.key});
@@ -16,11 +15,8 @@ class Info extends StatefulWidget {
 }
 
 class _InfoState extends State<Info> {
-  var ramziTestID =
-      FirebaseFirestore.instance.collection("users").doc(user!.uid).id;
   @override
   Widget build(BuildContext context) {
-    print("ramziTestID= $ramziTestID");
     return Scaffold(
       appBar: AppBar(
         elevation: 12,
@@ -40,23 +36,29 @@ class _InfoState extends State<Info> {
           docRef.get().then(
             (DocumentSnapshot doc) {
               final data = doc.data() as Map<String, dynamic>;
-              _UserRole = data.entries
+              // ...
+               Home.UserRole = data.entries
                   .singleWhere((element) => element.key == 'role')
                   .value
-                  .toString();
+                  .toString(); 
             },
             onError: (e) => print("Error getting document: $e"),
           );
+          // if (snapshot.hasData) {
+          //   final docs = snapshot.data!;
           return Align(
             alignment: Alignment.topCenter,
             child: Column(
               children: [
                 Text(user!.uid.toString(), style: _defTextStyle),
                 Text(user!.email.toString(), style: _defTextStyle),
-                Text(_UserRole, style: _defTextStyle),
+                // Text(docs['role'], style: _defTextStyle),
+                Text(Home.UserRole, style: _defTextStyle),
               ],
             ),
           );
+          // }
+          // return Text("Error!");
         },
       ),
     );

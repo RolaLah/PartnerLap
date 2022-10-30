@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:our_lap/screens.dart/Log.dart';
@@ -7,6 +8,7 @@ import 'package:our_lap/screens.dart/info.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
+  static String UserRole = "userR";
 
   @override
   Widget build(BuildContext context) {
@@ -31,6 +33,30 @@ class __HomeState extends State<_Home> {
   @override
   Widget build(BuildContext context) {
     print(user?.email);
+    return FutureBuilder(
+      builder: (context, snapshot) {
+        FirebaseFirestore.instance
+            .collection("users")
+            .doc(user!.uid)
+            .get()
+            .then(
+          (DocumentSnapshot doc) {
+            final data = doc.data() as Map<String, dynamic>;
+            // ...
+            Home.UserRole = data.entries
+                .singleWhere((element) => element.key == 'role')
+                .value
+                .toString();
+            print("_UserRole = ${Home.UserRole}");
+          },
+          onError: (e) => print("Error getting document: $e"),
+        );
+        return _Scaffold(context);
+      },
+    );
+  }
+
+  Scaffold _Scaffold(BuildContext context) {
     return Scaffold(
       backgroundColor: ConColor,
       appBar: AppBar(
