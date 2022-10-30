@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:our_lap/home.dart';
+import 'package:our_lap/myuser.dart';
 
 class Login_screen extends StatefulWidget {
   const Login_screen({super.key});
@@ -28,9 +29,9 @@ class _Login_screenState extends State<Login_screen> {
           sizedBox_Def,
           notAMember_Text,
           SignUp(),
-          chip_Red,
-          chip_Blue,
-          chip_MixColors
+          _AutoLog_Red,
+          _AutoLog_Blue,
+          _AutoLog_MixColors
         ],
       ),
     );
@@ -89,7 +90,7 @@ var notAMember_Text = Text(
   textAlign: TextAlign.center,
 );
 
-var chip_Red = ElevatedButton(
+var _AutoLog_Red = ElevatedButton(
     onPressed: () {
       emailController.text = "red@red.com";
       passController.text = "12341234";
@@ -97,7 +98,7 @@ var chip_Red = ElevatedButton(
     },
     child: Text("Red"));
 
-var chip_Blue = ElevatedButton(
+var _AutoLog_Blue = ElevatedButton(
     onPressed: () {
       emailController.text = "blue@blue.com";
       passController.text = "12341234";
@@ -105,7 +106,7 @@ var chip_Blue = ElevatedButton(
     },
     child: Text("Blue"));
 
-var chip_MixColors = ElevatedButton(
+var _AutoLog_MixColors = ElevatedButton(
     onPressed: () {
       emailController.text = "mix@colors.com";
       passController.text = "12341234";
