@@ -5,7 +5,7 @@ import 'package:our_lap/home.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 final coll = FirebaseFirestore.instance.collection("users");
-final docRef = coll.doc('acN8hoqzgYhrnki3ppjUfxhFu5y1');
+final docRef = coll.doc(user!.uid);
 String _UserRole = "";
 
 class Info extends StatefulWidget {
